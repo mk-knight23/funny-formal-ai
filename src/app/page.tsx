@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 
 export default function Home() {
   const [question, setQuestion] = useState("");
@@ -26,7 +25,7 @@ export default function Home() {
       } else {
         setError(data.error || "An error occurred.");
       }
-    } catch (err) {
+    } catch {
       setError("Network error.");
     } finally {
       setLoading(false);

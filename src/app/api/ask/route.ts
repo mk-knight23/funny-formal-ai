@@ -13,8 +13,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'OpenAI API key not set.' }, { status:500 });
   }
 
-  const prompt = `You are a highly formal AI assistant. Always reply in a formal tone. Answer the following question as best as you can:\n\nQuestion: ${question}\nFormal Answer:`;
-
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {
