@@ -33,9 +33,6 @@ export default function RootLayout({
           </div>
           <div className="flex gap-4">
             <Link href="/" className="text-white font-semibold hover:text-black transition-colors">Home</Link>
-            <Link href="/contact" className="text-white font-semibold hover:text-black transition-colors">Contact Us</Link>
-            <Link href="/login" className="text-white font-semibold hover:text-black transition-colors">Login</Link>
-            <Link href="/signup" className="text-white font-semibold hover:text-black transition-colors">Sign Up</Link>
           </div>
         </nav>
         {children}
