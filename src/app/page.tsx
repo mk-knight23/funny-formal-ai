@@ -2,17 +2,6 @@
 
 import { useState, useEffect } from "react";
 
-const AVAILABLE_MODELS = [
-  { id: 'llama-3.1-8b-instant', name: 'Llama 3.1 8B Instant (Meta)', description: 'Fast inference model' },
-  { id: 'llama-3.3-70b-versatile', name: 'Llama 3.3 70B Versatile (Meta)', description: 'High-quality reasoning' },
-  { id: 'meta-llama/llama-4-maverick-17b-128e-instruct', name: 'Llama 4 Maverick 17B (Meta)', description: 'Advanced reasoning' },
-  { id: 'meta-llama/llama-4-scout-17b-16e-instruct', name: 'Llama 4 Scout 17B (Meta)', description: 'Optimized for chat' },
-  { id: 'allam-2-7b', name: 'Allam 2 7B', description: 'Efficient language model' },
-  { id: 'groq/compound', name: 'Groq Compound', description: 'Multi-capability model' },
-  { id: 'qwen/qwen3-32b', name: 'Qwen 3 32B', description: 'Advanced Chinese model' },
-  { id: 'openai/gpt-oss-20b', name: 'GPT OSS 20B (OpenAI)', description: 'Open-source model' }
-];
-
 type APIResponse = {
   answer: string;
   model: string;
@@ -25,6 +14,22 @@ type APIResponse = {
   details?: unknown;
 };
 
+interface AIModel {
+  id: string;
+  name: string;
+  description: string;
+  provider: string;
+  supported: boolean;
+}
+
+interface APIStatusResponse {
+  message: string;
+  providers: string[];
+  available_models: AIModel[];
+  usage: string;
+  note: string;
+}
+
 export default function Home() {
   const [question, setQuestion] = useState("");
   const [selectedModel, setSelectedModel] = useState("llama-3.1-8b-instant");
@@ -33,15 +38,31 @@ export default function Home() {
   const [error, setError] = useState("");
   const [usedModel, setUsedModel] = useState("");
   const [responseData, setResponseData] = useState<APIResponse | null>(null);
+  const [availableModels, setAvailableModels] = useState<AIModel[]>([]);
+  const [loadingModels, setLoadingModels] = useState(true);
 
-  // Check API status on component mount
+  // Load available models from API on component mount
   useEffect(() => {
     fetch("/api/ask")
       .then(res => res.json())
-      .then(data => {
+      .then((data: APIStatusResponse) => {
         console.log("API Status:", data);
+        if (data.available_models && data.available_models.length > 0) {
+          setAvailableModels(data.available_models);
+          // Set default model to the first available one
+          setSelectedModel(data.available_models[0].id);
+        }
       })
-      .catch(err => console.error("API check failed:", err));
+      .catch(err => {
+        console.error("API check failed:", err);
+        // Fallback to default models if API fails
+        setAvailableModels([
+          { id: 'llama-3.1-8b-instant', name: 'Llama 3.1 8B Instant (Meta)', description: 'Fast inference model', provider: 'Meta', supported: true }
+        ]);
+      })
+      .finally(() => {
+        setLoadingModels(false);
+      });
   }, []);
 
   async function handleAsk(e: React.FormEvent) {
@@ -95,10 +116,10 @@ export default function Home() {
         Ask anything, get a formal answer... with a twist of fun! 🎉
         <br />
         <span className="text-sm text-gray-600">
-          Powered by 8 Free AI Models via Groq API (Lightning Fast)
+          Powered by {availableModels.length} Free AI Models via Groq API (Lightning Fast)
         </span>
       </p>
-      
+
       {/* Groq Status Alert */}
       <div className="w-full max-w-xl mb-4">
         <div className="bg-green-50 border-2 border-green-300 rounded-lg p-3">
@@ -121,17 +142,23 @@ export default function Home() {
           <label className="text-sm font-semibold text-gray-700">
             Select AI Model:
           </label>
-          <select
-            value={selectedModel}
-            onChange={(e) => setSelectedModel(e.target.value)}
-            className="w-full p-3 rounded border-2 border-fuchsia-300 bg-yellow-50 text-gray-900 focus:outline-none focus:ring-2 focus:ring-fuchsia-400 text-sm"
-          >
-            {AVAILABLE_MODELS.map((model) => (
-              <option key={model.id} value={model.id}>
-                {model.name} - {model.description}
-              </option>
-            ))}
-          </select>
+          {loadingModels ? (
+            <div className="w-full p-3 rounded border-2 border-fuchsia-300 bg-gray-100 text-gray-500 text-sm">
+              Loading models...
+            </div>
+          ) : (
+            <select
+              value={selectedModel}
+              onChange={(e) => setSelectedModel(e.target.value)}
+              className="w-full p-3 rounded border-2 border-fuchsia-300 bg-yellow-50 text-gray-900 focus:outline-none focus:ring-2 focus:ring-fuchsia-400 text-sm"
+            >
+              {availableModels.map((model: AIModel) => (
+                <option key={model.id} value={model.id}>
+                  {model.name} - {model.description}
+                </option>
+              ))}
+            </select>
+          )}
         </div>
 
         <textarea
