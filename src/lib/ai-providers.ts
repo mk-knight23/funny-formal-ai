@@ -42,7 +42,31 @@ Your question requires what I like to call "a methodical approach, examining the
 
 I shall structure my response to provide you with actionable information and crystal-clear explanations, peppered with just enough wit to make the learning process feel less like studying and more like chatting with a particularly knowledgeable friend who happens to have encyclopedic knowledge.
 
-What specific technical aspect of your question would you like me to tackle first? I'm practically buzzing with excitement to dive in!`
+What specific technical aspect of your question would you like me to tackle first? I'm practically buzzing with excitement to dive in!`,
+
+  'allam-2-7b': `Good day! I am quite pleased to assist you with your inquiry. As a refined AI model with the sophistication of a library filled with the greatest works of literature, I shall address your question with both elegance and clarity.
+
+Think of me as your intellectual companion, combining the wisdom of a scholar with the approachable nature of your favorite teacher. I approach your question methodically, ensuring that my response is not only informative but also engaging and thoroughly delightful.
+
+What particular aspect of this fascinating topic would you like me to elaborate upon? I am eager to provide you with insights that will both educate and entertain!`,
+
+  'groq/compound': `Salutations! I am absolutely thrilled to help you navigate through this question with the expertise of a seasoned professional and the enthusiasm of someone who genuinely loves what they do!
+
+As a multi-capability AI model, I have the distinct pleasure of drawing upon a diverse range of knowledge domains. I approach your inquiry by connecting various concepts and providing you with a comprehensive perspective that you might not find elsewhere.
+
+My goal is to deliver a response that is both thorough and accessible, with just the right amount of personality to make our interaction memorable. Feel free to ask me anything - I'm here to help you explore this fascinating subject in depth!`,
+
+  'qwen/qwen3-32b': `Distinguished greetings! I am honored to present my thoughts on your inquiry. As an advanced AI model with deep multilingual capabilities, I approach your question with the precision of a master craftsman and the cultural breadth of a world traveler.
+
+I shall provide you with a response that demonstrates both technical accuracy and cultural sensitivity, drawing upon diverse knowledge sources to give you the most comprehensive understanding possible. 
+
+Your question offers a wonderful opportunity for thorough exploration, and I look forward to sharing insights that will both inform and inspire you!`,
+
+  'openai/gpt-oss-20b': `Hello there! I'm absolutely delighted to address your question with the precision and reliability that has made me popular among developers and researchers alike. Think of me as a well-rounded, accessible AI that's ready to tackle any challenge you might have.
+
+As an open-source model, I combine the best of modern AI capabilities with the transparency and customizability that developers love. I'll make sure my response is not only accurate but also presented in a way that's both educational and genuinely enjoyable to read.
+
+What particular element of your question would you like me to explore in detail? I'm here and ready to dive in!`
 };
 
 // Type definitions for API responses
@@ -63,16 +87,24 @@ export const groqProvider: AIProvider = {
   name: 'Groq',
   baseUrl: 'https://api.groq.com/openai/v1',
   models: [
-    { id: 'llama-3.1-8b-instant', name: 'Llama 3.1 8B Instant (Meta)', description: 'Fast inference model', provider: 'Meta', supported: true },
-    { id: 'llama-3.3-70b-versatile', name: 'Llama 3.3 70B Versatile (Meta)', description: 'High-quality reasoning', provider: 'Meta', supported: true },
-    { id: 'meta-llama/llama-4-maverick-17b-128e-instruct', name: 'Llama 4 Maverick 17B (Meta)', description: 'Advanced reasoning', provider: 'Meta', supported: true },
-    { id: 'meta-llama/llama-4-scout-17b-16e-instruct', name: 'Llama 4 Scout 17B (Meta)', description: 'Optimized for chat', provider: 'Meta', supported: true },
-    { id: 'allam-2-7b', name: 'Allam 2 7B', description: 'Efficient language model', provider: 'Allam', supported: true },
-    { id: 'groq/compound', name: 'Groq Compound', description: 'Multi-capability model', provider: 'Groq', supported: true },
-    { id: 'qwen/qwen3-32b', name: 'Qwen 3 32B', description: 'Advanced Chinese model', provider: 'Qwen', supported: true },
-    { id: 'openai/gpt-oss-20b', name: 'GPT OSS 20B (OpenAI)', description: 'Open-source model', provider: 'OpenAI', supported: true }
+    { id: 'llama-3.1-8b-instant', name: 'Llama 3.1 8B Instant (Meta)', description: 'Fast inference model (30 RPM, 14.4K RPD)', provider: 'Meta', supported: true },
+    { id: 'llama-3.3-70b-versatile', name: 'Llama 3.3 70B Versatile (Meta)', description: 'High-quality reasoning model (30 RPM, 1K RPD)', provider: 'Meta', supported: true },
+    { id: 'meta-llama/llama-4-maverick-17b-128e-instruct', name: 'Llama 4 Maverick 17B (Meta)', description: 'Advanced reasoning model (30 RPM, 1K RPD)', provider: 'Meta', supported: true },
+    { id: 'meta-llama/llama-4-scout-17b-16e-instruct', name: 'Llama 4 Scout 17B (Meta)', description: 'Optimized for chat (30 RPM, 1K RPD)', provider: 'Meta', supported: true },
+    { id: 'allam-2-7b', name: 'Allam 2 7B', description: 'Efficient language model (30 RPM, 7K RPD)', provider: 'Allam', supported: true },
+    { id: 'groq/compound', name: 'Groq Compound', description: 'Multi-capability model (30 RPM, 250 RPD)', provider: 'Groq', supported: true },
+    { id: 'groq/compound-mini', name: 'Groq Compound Mini', description: 'Lightweight compound model (30 RPM, 250 RPD)', provider: 'Groq', supported: true },
+    { id: 'qwen/qwen3-32b', name: 'Qwen 3 32B', description: 'Advanced Chinese model (60 RPM, 1K RPD)', provider: 'Qwen', supported: true },
+    { id: 'openai/gpt-oss-20b', name: 'GPT OSS 20B (OpenAI)', description: 'Open-source model (30 RPM, 1K RPD)', provider: 'OpenAI', supported: true },
+    { id: 'openai/gpt-oss-120b', name: 'GPT OSS 120B (OpenAI)', description: 'Large open-source model (30 RPM, 1K RPD)', provider: 'OpenAI', supported: true },
+    { id: 'meta-llama/llama-guard-4-12b', name: 'Llama Guard 4 12B (Meta)', description: 'Safety and moderation model (30 RPM, 14.4K RPD)', provider: 'Meta', supported: true },
+    { id: 'meta-llama/llama-prompt-guard-2-22m', name: 'Llama Prompt Guard 2 22M (Meta)', description: 'Prompt security model (30 RPM, 14.4K RPD)', provider: 'Meta', supported: true },
+    { id: 'meta-llama/llama-prompt-guard-2-86m', name: 'Llama Prompt Guard 2 86M (Meta)', description: 'Advanced prompt security (30 RPM, 14.4K RPD)', provider: 'Meta', supported: true },
+    { id: 'moonshotai/kimi-k2-instruct', name: 'Kimi K2 Instruct (MoonshotAI)', description: 'Multimodal instruction model (60 RPM, 1K RPD)', provider: 'MoonshotAI', supported: true },
+    { id: 'moonshotai/kimi-k2-instruct-0905', name: 'Kimi K2 Instruct 0905 (MoonshotAI)', description: 'Updated multimodal model (60 RPM, 1K RPD)', provider: 'MoonshotAI', supported: true },
+    { id: 'openai/gpt-oss-safeguard-20b', name: 'GPT OSS Safeguard 20B (OpenAI)', description: 'Safe open-source model (30 RPM, 1K RPD)', provider: 'OpenAI', supported: true }
   ],
-  
+
   authenticate: async (apiKey: string): Promise<boolean> => {
     try {
       // Test with a simple models request
