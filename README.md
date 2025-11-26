@@ -13,34 +13,55 @@ Think of it as having a conversation with:
 - A butler who went to Oxford and took improv classes
 - A librarian who's secretly hilarious and loves dad jokes
 
-## 🚀 The Magic Powers (16 AI Models!)
+## 🌐 Multi-Provider Support (30+ AI Models!)
 
-Our AI comes with **16 different personalities** (all powered by lightning-fast Groq API):
+Access **30+ AI models** from **5 different providers**! Configure API keys in the Settings dialog (⚙️).
 
-### 🎭 **The Meta Marvels** (6 Models)
-- **Llama 3.1 8B Instant** ⚡ - The speedster with Swiss watch precision (30 RPM, 14.4K RPD)
-- **Llama 3.3 70B Versatile** 🧠 - The deep thinker with coffee addiction (30 RPM, 1K RPD)  
-- **Llama 4 Maverick** 🚀 - The innovative rebel with a PhD (30 RPM, 1K RPD)
-- **Llama 4 Scout** 🗺️ - The explorer with excellent navigation skills (30 RPM, 1K RPD)
-- **Llama Guard 4 12B** 🛡️ - The security expert who takes no prisoners (30 RPM, 14.4K RPD)
-- **Prompt Guard Models** 🔒 - The bouncers at the AI nightclub (30 RPM, 14.4K RPD)
+### 🔌 Supported Providers
 
-### 🏭 **The Groq Squad** (2 Models)
-- **Groq Compound** 🧪 - The multi-talented Swiss Army knife (30 RPM, 250 RPD)
-- **Groq Compound Mini** 🔧 - The pocket-sized genius (30 RPM, 250 RPD)
+1. **Groq** (FREE) - Lightning-fast inference with Meta Llama models
+2. **OpenRouter** (FREE) - Access to Grok, DeepSeek, Qwen, Gemini
+3. **Routeway** (FREE) - Kimi, GLM, DeepSeek, Llama models
+4. **MegaLLM** (PAID) - Premium access to latest models
+5. **AgentRouter** (FREE) - GLM, DeepSeek, Claude models
 
-### 🔓 **The Open Source Squad** (3 Models)
-- **GPT OSS 20B** 📖 - The transparent bookworm (30 RPM, 1K RPD)
-- **GPT OSS 120B** 📚 - The literary giant with commitment issues (30 RPM, 1K RPD)
-- **GPT OSS Safeguard 20B** 🛡️ - The bodyguard with a heart of gold (30 RPM, 1K RPD)
+**See [MULTI_PROVIDER_GUIDE.md](MULTI_PROVIDER_GUIDE.md) for complete details!**
 
-### 🌍 **The International Squad** (5 Models)
-- **Allam 2 7B** 🌟 - The efficient multitasker (30 RPM, 7K RPD)
-- **Qwen 3 32B** 🇨🇳 - The polyglot philosopher (60 RPM, 1K RPD)
-- **Kimi K2 Instruct** 🤖 - The multimodal mastermind (60 RPM, 1K RPD)
-- **Kimi K2 Instruct 0905** ⭐ - Kimi's cooler younger sibling (60 RPM, 1K RPD)
+## 🚀 The Magic Powers
 
-*All models are completely **FREE** through Groq's incredibly fast API!*
+Our AI comes with **30+ different models** from multiple providers:
+
+### 🎭 **Groq Models** (FREE)
+- **Llama 3.1 8B Instant** ⚡ - Ultra-fast inference
+- **Llama 3.3 70B Versatile** 🧠 - High-quality reasoning
+- **Llama 4 Maverick** 🚀 - Advanced reasoning (128K context)
+- **Llama 4 Scout** 🗺️ - Optimized for chat
+
+### 🌐 **OpenRouter Models** (FREE)
+- **Grok Beta** 🤖 - xAI's conversational model (131K context)
+- **DeepSeek Chat** 💡 - Powerful reasoning (64K context)
+- **Qwen 2.5 72B** 🇨🇳 - Advanced multilingual (32K context)
+- **Gemini 2.0 Flash** ⚡ - Fast Google model (1M context!)
+- **Llama 3.2 3B** 📦 - Efficient small model
+
+### 🛣️ **Routeway Models** (FREE)
+- **Kimi (Moonshot)** 🌙 - 8K and 32K context versions
+- **GLM-4 Plus** 🎯 - Advanced reasoning (128K context)
+- **DeepSeek Chat** 💡 - Powerful reasoning
+- **Llama 3.1 70B** 🦙 - High-quality responses
+
+### 🤖 **AgentRouter Models** (FREE)
+- **GLM-4 Flash** ⚡ - Fast reasoning (128K context)
+- **DeepSeek Chat** 💡 - Powerful reasoning
+- **Claude 3 Haiku** 🎨 - Fast Claude (200K context!)
+- **Claude 3 Sonnet** 🎵 - Balanced Claude (200K context)
+
+### 💎 **MegaLLM Models** (PAID)
+- **Llama 3.3 70B** - Latest Llama version
+- **Qwen 2.5 72B** - Advanced multilingual
+- **DeepSeek V3** - Latest DeepSeek
+
+*Most models are completely **FREE**! Configure API keys in Settings (⚙️)*
 
 ## 🎨 The Unique Experience
 
@@ -52,6 +73,12 @@ Our AI comes with **16 different personalities** (all powered by lightning-fast 
 4. **🌍 Multiple Providers**: Meta, OpenAI, Qwen, MoonshotAI, and more
 5. **📊 Rate Limits Visible**: Transparent about usage (no surprises!)
 6. **🎪 No Limits**: No monthly quotas, no hidden costs, just pure AI goodness
+7. **💬 Chat History**: Persistent conversation history with localStorage
+8. **🌙 Dark Mode**: Automatic dark mode based on system preferences
+9. **📋 Copy to Clipboard**: Easy sharing of AI responses
+10. **⚡ Streaming Responses**: Real-time typing effect for better UX
+11. **♿ Accessible**: Full keyboard navigation and ARIA labels
+12. **📱 Responsive**: Works perfectly on all devices
 
 ### Example Interaction:
 **You**: "What's the weather like?"
@@ -62,11 +89,14 @@ The sky appears to be in one of its more theatrical moods today, likely performi
 
 ## 🛠️ Tech Stack (The Serious Bits)
 
-- **⚛️ Next.js 15** - The superhero framework
-- **🎨 Tailwind CSS** - For making things pretty
-- **📘 TypeScript** - Because we like our code like our jokes: type-safe
+- **⚛️ Next.js 15** - The superhero framework with App Router
+- **⚡ React 19** - Latest React with concurrent features
+- **🎨 Tailwind CSS 4** - For making things pretty with the new engine
+- **📘 TypeScript 5** - Because we like our code like our jokes: type-safe
 - **🚀 Groq API** - Lightning-fast AI inference
 - **🛡️ Vercel** - Where dreams go to scale
+- **💾 LocalStorage** - Client-side persistence for chat history
+- **🌙 CSS Variables** - Dynamic theming support
 
 ## 🚀 Getting Started (For Developers)
 
@@ -92,11 +122,16 @@ The sky appears to be in one of its more theatrical moods today, likely performi
    pnpm install
    ```
 
-3. **Set up environment variables**:
-   Create a `.env.local` file:
+3. **Set up environment variables** (optional):
+   Create a `.env.local` file for server-side keys:
    ```env
    GROQ_API_KEY=your_groq_api_key_here
+   OPENROUTER_API_KEY=your_key_here
+   ROUTEWAY_API_KEY=your_key_here
+   # Add more as needed
    ```
+   
+   Or configure API keys in the app Settings (⚙️) dialog!
 
 4. **Start the development server**:
    ```bash
@@ -119,8 +154,12 @@ The sky appears to be in one of its more theatrical moods today, likely performi
 1. **Visit the app** (when deployed or running locally)
 2. **Choose your AI personality** from the dropdown (16 options!)
 3. **Ask any question** (serious, silly, or completely random)
-4. **Enjoy the formal-yet-funny response!**
-5. **Try different models** to see their unique personalities
+4. **Watch the AI type in real-time** with streaming responses
+5. **View your chat history** - all conversations are saved locally
+6. **Copy responses** with one click using the copy button
+7. **Toggle dark mode** with the moon/sun button
+8. **Use keyboard shortcuts** - Press Enter to send, Shift+Enter for new line
+9. **Try different models** to see their unique personalities
 
 ## 🎭 Example Questions to Try
 
@@ -130,21 +169,58 @@ The sky appears to be in one of its more theatrical moods today, likely performi
 - "Tell me about the history of broccoli in exactly 3 sentences"
 - "Why did the chicken cross the road?" (expect the most formal answer ever!)
 
+## ✨ New Features (Latest Update)
+
+### 🚀 React 19 & Next.js 15 Upgrades
+- **Streaming Responses**: Real-time typing effect for AI responses
+- **Optimistic Updates**: Instant UI feedback before server response
+- **Concurrent Rendering**: Smoother interactions and better performance
+
+### 💬 Enhanced Chat Experience
+- **Persistent History**: All conversations saved in localStorage
+- **Copy to Clipboard**: One-click copying of any message
+- **Auto-scroll**: Automatically scrolls to latest message
+- **Clear History**: Easy way to start fresh
+
+### 🎨 UI/UX Improvements
+- **Dark Mode**: Automatic detection with manual toggle
+- **Loading Skeletons**: Better loading states
+- **Error Boundaries**: Graceful error handling
+- **Keyboard Shortcuts**: Enter to send, Shift+Enter for new line
+- **Responsive Design**: Optimized for all screen sizes
+
+### ♿ Accessibility
+- **ARIA Labels**: Full screen reader support
+- **Keyboard Navigation**: Complete keyboard accessibility
+- **Focus Management**: Proper focus handling
+- **Color Contrast**: WCAG compliant colors
+
+### 🎯 Performance
+- **Custom Scrollbar**: Styled scrollbars matching theme
+- **Smooth Animations**: CSS-based animations for better performance
+- **Optimized Re-renders**: React.memo and useCallback usage
+- **Lazy Loading**: Components loaded on demand
+
 ## 🏗️ Project Structure
 
 ```
 funny-formal-ai/
 ├── src/
 │   ├── app/
-│   │   ├── api/ask/route.ts    # The magic happens here
-│   │   ├── page.tsx           # The main chat interface
-│   │   ├── layout.tsx         # The fancy navigation
-│   │   └── globals.css        # All the pretty colors
+│   │   ├── api/ask/route.ts    # API route for AI requests
+│   │   ├── page.tsx           # Main chat interface (upgraded!)
+│   │   ├── layout.tsx         # Root layout with navigation
+│   │   ├── not-found.tsx      # Custom 404 page
+│   │   └── globals.css        # Global styles + dark mode
+│   ├── components/
+│   │   ├── ErrorBoundary.tsx  # Error handling component
+│   │   └── LoadingSkeleton.tsx # Loading state component
 │   └── lib/
-│       └── ai-providers.ts    # Where the 16 models live
-├── public/                    # Icons and static stuff
-├── .env.local                # Your secrets (API key)
-└── README.md                 # This delightful file
+│       └── ai-providers.ts    # 16 AI models configuration
+├── public/                    # Static assets
+├── .env.local                # Environment variables
+├── package.json              # Dependencies (React 19, Next.js 15)
+└── README.md                 # This file
 ```
 
 ## 🎨 Customization
@@ -155,6 +231,28 @@ Want to add more models? Change the personality? Modify the styling? Everything 
 - **Change personality**: Modify the system prompt in `ai-providers.ts`
 - **Styling updates**: Edit `src/app/globals.css` and component styles
 - **Add features**: Extend `src/app/page.tsx`
+- **Dark mode colors**: Customize CSS variables in `globals.css`
+- **Chat history storage**: Modify localStorage logic in `page.tsx`
+
+## 🔧 Configuration
+
+### Environment Variables
+```env
+GROQ_API_KEY=your_groq_api_key_here
+```
+
+### Tailwind CSS 4
+This project uses the latest Tailwind CSS 4 with the new engine:
+- Faster builds
+- Better performance
+- Native CSS variables
+- Improved dark mode support
+
+### TypeScript Configuration
+Strict mode enabled for maximum type safety:
+- No implicit any
+- Strict null checks
+- No unused locals/parameters
 
 ## 🤝 Contributing
 
