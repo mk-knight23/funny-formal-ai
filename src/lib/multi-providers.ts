@@ -1,4 +1,15 @@
 // Multi-Provider AI System
+
+// Guard against Node.js localStorage polyfill issues
+if (typeof globalThis !== 'undefined' && typeof globalThis.localStorage !== 'undefined') {
+  // If localStorage exists but doesn't work properly (Node.js env), remove it
+  try {
+    globalThis.localStorage.getItem('__test__');
+  } catch {
+    // @ts-ignore - removing broken polyfill
+    delete globalThis.localStorage;
+  }
+}
 export interface AIModel {
   id: string;
   name: string;
@@ -125,23 +136,27 @@ const DEFAULT_API_KEYS: APIKeyConfig = {
   routeway: 'sk-LeRlb8aww5YXvdP57hnVw07xmIA2c3FvfeLvPhbmFU14osMn'
 };
 
-function isLocalStorageAvailable(): boolean {
+// Safe browser-only localStorage access
+function getLocalStorage(): Storage | null {
+  if (typeof window === 'undefined') return null;
   try {
-    if (typeof window === 'undefined' || !window.localStorage) return false;
-    const testKey = '__ls_test__';
-    localStorage.setItem(testKey, testKey);
-    localStorage.removeItem(testKey);
-    return typeof localStorage.getItem === 'function';
+    const ls = window.localStorage;
+    if (!ls || typeof ls.getItem !== 'function') return null;
+    // Test it works
+    ls.setItem('__test__', '__test__');
+    ls.removeItem('__test__');
+    return ls;
   } catch {
-    return false;
+    return null;
   }
 }
 
 export function getStoredApiKeys(): APIKeyConfig {
-  if (!isLocalStorageAvailable()) return DEFAULT_API_KEYS;
+  const ls = getLocalStorage();
+  if (!ls) return DEFAULT_API_KEYS;
 
   try {
-    const stored = localStorage.getItem('apiKeys');
+    const stored = ls.getItem('apiKeys');
     const storedKeys = stored ? JSON.parse(stored) : {};
     return { ...DEFAULT_API_KEYS, ...storedKeys };
   } catch {
@@ -150,9 +165,10 @@ export function getStoredApiKeys(): APIKeyConfig {
 }
 
 export function saveApiKeys(keys: APIKeyConfig): void {
-  if (!isLocalStorageAvailable()) return;
+  const ls = getLocalStorage();
+  if (!ls) return;
   try {
-    localStorage.setItem('apiKeys', JSON.stringify(keys));
+    ls.setItem('apiKeys', JSON.stringify(keys));
   } catch {
     console.error('Failed to save API keys');
   }

@@ -71,9 +71,9 @@ export default function Home() {
 
   // Load chat history from localStorage (with SSR guard)
   useEffect(() => {
-    if (typeof window === 'undefined' || !window.localStorage || typeof localStorage.getItem !== 'function') return;
+    if (typeof window === 'undefined' || !window.localStorage || typeof window.localStorage.getItem !== 'function') return;
     try {
-      const saved = localStorage.getItem('chatHistory');
+      const saved = window.localStorage.getItem('chatHistory');
       if (saved) {
         setChatHistory(JSON.parse(saved));
       }
@@ -84,10 +84,10 @@ export default function Home() {
 
   // Save chat history to localStorage (with SSR guard)
   useEffect(() => {
-    if (typeof window === 'undefined' || !window.localStorage || typeof localStorage.setItem !== 'function') return;
+    if (typeof window === 'undefined' || !window.localStorage || typeof window.localStorage.setItem !== 'function') return;
     if (chatHistory.length > 0) {
       try {
-        localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+        window.localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
       } catch (e) {
         console.error('Failed to save chat history:', e);
       }
@@ -127,8 +127,8 @@ export default function Home() {
   const clearHistory = useCallback(() => {
     if (confirm('Are you sure you want to clear all chat history?')) {
       setChatHistory([]);
-      if (typeof window !== 'undefined' && window.localStorage && typeof localStorage.removeItem === 'function') {
-        localStorage.removeItem('chatHistory');
+      if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.removeItem === 'function') {
+        window.localStorage.removeItem('chatHistory');
       }
       setError("");
     }
