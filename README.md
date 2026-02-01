@@ -1,6 +1,31 @@
 # 🤖 Funny Formal AI - Where Bureaucracy Meets Comedy! 🎭
 
-> *"Ask anything, get a formal answer... with a twist of fun!"* 
+> *"Ask anything, get a formal answer... with a twist of fun!"*
+
+## ✅ Stabilization Status (Ralph 5-Iteration Loop)
+
+| Iteration | Focus | Status |
+|-----------|-------|--------|
+| 1 | Runtime Audit & Failure Mapping | ✅ Complete |
+| 2 | Render & Lifecycle Stabilization | ✅ Complete |
+| 3 | Core Feature Repair (Chat) | ✅ Complete |
+| 4 | UX, Error Handling & Noise Removal | ✅ Complete |
+| 5 | Browser Verification & Lock-In | ✅ Complete |
+
+**Current State:**
+- ✅ App builds successfully (Next.js 15, React 19, Tailwind CSS 4)
+- ✅ Dev server runs on http://localhost:3002
+- ✅ API endpoints working (/api/ask)
+- ✅ Chat interface functional with mock/demo mode
+- ✅ Multi-provider support (Groq, OpenRouter, Routeway, MegaLLM, AgentRouter)
+- ✅ Graceful fallback when API keys invalid
+
+**Known Limitations:**
+- Live API responses require valid API keys
+- Mock mode active when keys are invalid/empty
+- Running without Turbopack (has localStorage SSR bug)
+
+--- 
 
 Welcome to the most polite, well-dressed AI you've ever met! Picture this: you've got the sophistication of a Victorian gentleman, the humor of a stand-up comedian, and the knowledge of a rocket scientist - all rolled into one delightful digital experience. That's exactly what Funny Formal AI brings to the table!
 
