@@ -6,7 +6,7 @@ if (typeof globalThis !== 'undefined' && typeof globalThis.localStorage !== 'und
   try {
     globalThis.localStorage.getItem('__test__');
   } catch {
-    // @ts-ignore - removing broken polyfill
+    // @ts-expect-error - removing broken polyfill
     delete globalThis.localStorage;
   }
 }
@@ -228,9 +228,9 @@ export async function generateResponse(
   });
 
   if (!response.ok) {
-    const error = await response.text();
+    const errorText = await response.text();
     // Return mock response for demo purposes instead of throwing
-    console.warn(`API Error (${providerId}): ${response.status}. Using mock response.`);
+    console.warn(`API Error (${providerId}): ${response.status}. Using mock response.`, errorText);
     return generateMockResponse(message, modelId, providerId);
   }
 
