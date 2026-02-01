@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { 
-  PROVIDERS, 
-  getAllModels, 
-  getProviderFromModelId, 
+import {
+  PROVIDERS,
+  getAllModels,
+  getProviderFromModelId,
   getModelId,
-  generateResponse 
+  generateResponse,
+  getStoredApiKeys
 } from '@/lib/multi-providers';
 
 export async function POST(req: NextRequest) {
@@ -23,12 +24,13 @@ export async function POST(req: NextRequest) {
   const modelId = getModelId(model);
   
   // Get API key (from client, environment, or defaults)
+  const defaultKeys = getStoredApiKeys();
   let apiKey = '';
   if (provider.id === 'groq') {
-    apiKey = process.env.GROQ_API_KEY || apiKeys?.groq || '';
+    apiKey = process.env.GROQ_API_KEY || apiKeys?.groq || defaultKeys.groq || '';
   } else {
-    // Use provided key or fall back to hardcoded defaults
-    apiKey = apiKeys?.[provider.id] || '';
+    // Use provided key, or fall back to hardcoded defaults
+    apiKey = apiKeys?.[provider.id] || defaultKeys[provider.id as keyof typeof defaultKeys] || '';
   }
 
   // Note: API keys are now hardcoded in multi-providers.ts as defaults
