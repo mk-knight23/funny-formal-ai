@@ -229,9 +229,25 @@ export async function generateResponse(
 
   if (!response.ok) {
     const error = await response.text();
-    throw new Error(`API Error: ${response.status} - ${error}`);
+    // Return mock response for demo purposes instead of throwing
+    console.warn(`API Error (${providerId}): ${response.status}. Using mock response.`);
+    return generateMockResponse(message, modelId, providerId);
   }
 
   const data = await response.json();
-  return data.choices?.[0]?.message?.content || 'No response generated.';
+  return data.choices?.[0]?.message?.content || generateMockResponse(message, modelId, providerId);
+}
+
+// Generate a mock response for demo when API keys are invalid
+function generateMockResponse(message: string, modelId: string, providerId: string): string {
+  const responses = [
+    `Greetings! I am absolutely delighted to receive your inquiry regarding "${message.slice(0, 30)}..." Allow me to respond with the utmost formality and a dash of whimsy! *adjusts monocle*`,
+    `Ah, what a splendid question! "${message.slice(0, 30)}..." - This reminds me of the time I debated philosophy with a particularly eloquent tea kettle. *chuckles formally*`,
+    `My dear interlocutor! Your query "${message.slice(0, 30)}..." has been received with the highest regard. Permit me to craft a response worthy of a royal correspondence!`,
+    `*Clears throat in a distinguished manner* I am honored to address your inquiry about "${message.slice(0, 30)}...". Please accept this response, delivered with bureaucratic precision and comedic timing!`,
+    `Well, well! "${message.slice(0, 30)}..." - A question most intriguing! As a formal AI of the highest caliber, I shall endeavor to respond with both gravitas and gentle humor!`
+  ];
+
+  const mockResponse = responses[Math.floor(Math.random() * responses.length)];
+  return `[DEMO MODE - ${providerId.toUpperCase()}]\n\n${mockResponse}\n\nNote: This is a demonstration response. Configure valid API keys in Settings for live responses from ${modelId}.`;
 }
