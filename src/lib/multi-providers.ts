@@ -125,13 +125,24 @@ const DEFAULT_API_KEYS: APIKeyConfig = {
   routeway: 'sk-LeRlb8aww5YXvdP57hnVw07xmIA2c3FvfeLvPhbmFU14osMn'
 };
 
+function isLocalStorageAvailable(): boolean {
+  try {
+    if (typeof window === 'undefined' || !window.localStorage) return false;
+    const testKey = '__ls_test__';
+    localStorage.setItem(testKey, testKey);
+    localStorage.removeItem(testKey);
+    return typeof localStorage.getItem === 'function';
+  } catch {
+    return false;
+  }
+}
+
 export function getStoredApiKeys(): APIKeyConfig {
-  if (typeof window === 'undefined') return DEFAULT_API_KEYS;
-  
+  if (!isLocalStorageAvailable()) return DEFAULT_API_KEYS;
+
   try {
     const stored = localStorage.getItem('apiKeys');
     const storedKeys = stored ? JSON.parse(stored) : {};
-    // Merge stored keys with defaults (stored keys take precedence)
     return { ...DEFAULT_API_KEYS, ...storedKeys };
   } catch {
     return DEFAULT_API_KEYS;
@@ -139,8 +150,12 @@ export function getStoredApiKeys(): APIKeyConfig {
 }
 
 export function saveApiKeys(keys: APIKeyConfig): void {
-  if (typeof window === 'undefined') return;
-  localStorage.setItem('apiKeys', JSON.stringify(keys));
+  if (!isLocalStorageAvailable()) return;
+  try {
+    localStorage.setItem('apiKeys', JSON.stringify(keys));
+  } catch {
+    console.error('Failed to save API keys');
+  }
 }
 
 export function getAllModels(): AIModel[] {

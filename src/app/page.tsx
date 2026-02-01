@@ -69,22 +69,28 @@ export default function Home() {
     setApiKeys(getStoredApiKeys());
   }, []);
 
-  // Load chat history from localStorage
+  // Load chat history from localStorage (with SSR guard)
   useEffect(() => {
-    const saved = localStorage.getItem('chatHistory');
-    if (saved) {
-      try {
+    if (typeof window === 'undefined' || !window.localStorage || typeof localStorage.getItem !== 'function') return;
+    try {
+      const saved = localStorage.getItem('chatHistory');
+      if (saved) {
         setChatHistory(JSON.parse(saved));
-      } catch (e) {
-        console.error('Failed to load chat history:', e);
       }
+    } catch (e) {
+      console.error('Failed to load chat history:', e);
     }
   }, []);
 
-  // Save chat history to localStorage
+  // Save chat history to localStorage (with SSR guard)
   useEffect(() => {
+    if (typeof window === 'undefined' || !window.localStorage || typeof localStorage.setItem !== 'function') return;
     if (chatHistory.length > 0) {
-      localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+      try {
+        localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+      } catch (e) {
+        console.error('Failed to save chat history:', e);
+      }
     }
   }, [chatHistory]);
 
@@ -121,7 +127,9 @@ export default function Home() {
   const clearHistory = useCallback(() => {
     if (confirm('Are you sure you want to clear all chat history?')) {
       setChatHistory([]);
-      localStorage.removeItem('chatHistory');
+      if (typeof window !== 'undefined' && window.localStorage && typeof localStorage.removeItem === 'function') {
+        localStorage.removeItem('chatHistory');
+      }
       setError("");
     }
   }, []);

@@ -1,0 +1,29 @@
+#!/bin/bash
+# Ralph Enable Script for AI-VIBE-CHAT-V3
+# Run this once to enable Ralph autonomous mode
+
+echo "🧠 Enabling Ralph for AI-VIBE-CHAT-V3..."
+
+# Check if we're in the right directory
+if [ ! -d "AI-VIBE-CHAT-V3" ]; then
+    echo "❌ Error: Must be run from AI-VIBE-ChatWeb directory"
+    exit 1
+fi
+
+# Check if .ralph/PROMPT.md exists
+if [ ! -f ".ralph/PROMPT.md" ]; then
+    echo "❌ Error: .ralph/PROMPT.md not found"
+    exit 1
+fi
+
+echo "✅ Ralph structure verified"
+echo ""
+echo "📋 Available commands:"
+echo "  ralph --monitor     # Start autonomous mode"
+echo "  ralph --status      # Check iteration status"
+echo "  ralph --reset       # Reset iteration counter"
+echo ""
+echo "🎯 Target: AI-VIBE-CHAT-V3/"
+echo "📝 Prompt: .ralph/PROMPT.md"
+echo ""
+echo "Ready to run: ralph --monitor"
