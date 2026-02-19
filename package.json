@@ -1,6 +1,7 @@
 {
   "name": "ai-formal-agent",
   "version": "0.1.0",
+  "description": "A delightfully formal yet humorous AI agent interface built with Next.js 15, React 19, and multi-provider LLM routing.",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
