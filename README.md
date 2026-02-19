@@ -1,6 +1,49 @@
-# 🤖 Funny Formal AI - Where Bureaucracy Meets Comedy! 🎭
+# 🤖 AI-VIBE-CHAT-V3
+
+<p align="center">
+  <img src="https://img.shields.io/badge/AI--VIBE-CHAT--V3-black?style=for-the-badge&logo=next.js&logoColor=white" alt="AI Vibe Project">
+  <br>
+  <b>Funny Formal AI - Where Bureaucracy Meets Comedy! 🎭</b>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-15.0+-black.svg?logo=next.js&logoColor=white" alt="Next.js 15">
+  <img src="https://img.shields.io/badge/React-19.0+-61DAFB.svg?logo=react&logoColor=white" alt="React 19">
+  <img src="https://img.shields.io/badge/Tailwind-4.0+-06B6D4.svg?logo=tailwind-css&logoColor=white" alt="Tailwind 4">
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
+</p>
+
+---
 
 > *"Ask anything, get a formal answer... with a twist of fun!"*
+
+---
+
+## 🗺️ Quick Navigation
+
+- [✅ Stabilization Status](#-stabilization-status-ralph-5-iteration-loop)
+- [🎯 What's This All About?](#-whats-this-all-about)
+- [🌐 Multi-Provider Support](#-multi-provider-support-30-ai-models)
+- [🚀 The Magic Powers](#-the-magic-powers)
+- [🎨 The Unique Experience](#-the-unique-experience)
+- [🛠️ Tech Stack](#%EF%B8%8F-tech-stack-the-serious-bits)
+- [🚀 Getting Started](#-getting-started-for-developers)
+- [🎮 How to Use](#-how-to-use)
+- [📁 Project Structure](#%EF%B8%8F-project-structure)
+
+---
+
+## 🛠️ Engineered With
+
+<p align="left">
+  <a href="https://nextjs.org"><img src="https://skillicons.dev/icons?i=nextjs" alt="Next.js"></a>
+  <a href="https://react.dev"><img src="https://skillicons.dev/icons?i=react" alt="React"></a>
+  <a href="https://tailwindcss.com"><img src="https://skillicons.dev/icons?i=tailwind" alt="Tailwind CSS"></a>
+  <a href="https://typescriptlang.org"><img src="https://skillicons.dev/icons?i=ts" alt="TypeScript"></a>
+  <a href="https://vercel.com"><img src="https://skillicons.dev/icons?i=vercel" alt="Vercel"></a>
+</p>
+
+---
 
 ## ✅ Stabilization Status (Ralph 5-Iteration Loop)
 
@@ -112,6 +155,30 @@ Our AI comes with **30+ different models** from multiple providers:
 
 The sky appears to be in one of its more theatrical moods today, likely performing what I call 'the grand drama of atmospheric storytelling.' Might I inquire as to which specific meteorological aspect tickles your weather-app-checking fancy? I am at your service, ready to embark upon this delightful forecast adventure with you!"*
 
+## 🔒 Security Status
+
+**Last Security Audit:** February 20, 2026
+**Status:** 🟢 80% Secured (4/5 issues fixed)
+
+### Security Fixes Applied
+| Issue | Status | Details |
+|-------|--------|---------|
+| API Key Transmission | ✅ Fixed | Server-side only |
+| Rate Limiting | ✅ Fixed | Added to /api/ask |
+| Input Validation | ✅ Fixed | Zod schemas added |
+| Error Leakage | ✅ Fixed | Generic messages |
+| localStorage Encryption | 🔄 Pending | In progress |
+
+### React/Next.js Best Practices Applied
+- ✅ Server-side rendering (SSR)
+- ✅ TypeScript strict mode
+- ✅ Error boundaries
+- ✅ Input validation
+- ✅ Rate limiting
+- ✅ Secure error handling
+
+---
+
 ## 🛠️ Tech Stack (The Serious Bits)
 
 - **⚛️ Next.js 15** - The superhero framework with App Router
@@ -141,10 +208,6 @@ The sky appears to be in one of its more theatrical moods today, likely performi
 2. **Install dependencies**:
    ```bash
    npm install
-   # or
-   yarn install
-   # or
-   pnpm install
    ```
 
 3. **Set up environment variables** (optional):
@@ -153,7 +216,6 @@ The sky appears to be in one of its more theatrical moods today, likely performi
    GROQ_API_KEY=your_groq_api_key_here
    OPENROUTER_API_KEY=your_key_here
    ROUTEWAY_API_KEY=your_key_here
-   # Add more as needed
    ```
    
    Or configure API keys in the app Settings (⚙️) dialog!
@@ -250,8 +312,6 @@ funny-formal-ai/
 
 ## 🎨 Customization
 
-Want to add more models? Change the personality? Modify the styling? Everything is designed to be easily customizable:
-
 - **Add models**: Update `src/lib/ai-providers.ts`
 - **Change personality**: Modify the system prompt in `ai-providers.ts`
 - **Styling updates**: Edit `src/app/globals.css` and component styles
@@ -281,14 +341,11 @@ Strict mode enabled for maximum type safety:
 
 ## 🤝 Contributing
 
-Found a bug? Want to add a feature? Have a funny prompt suggestion? 
-
 1. Fork the repo
 2. Create a feature branch
 3. Make your changes
 4. Test everything works
 5. Submit a pull request
-6. Get celebrated! 🎉
 
 ## 📜 License
 
@@ -307,20 +364,17 @@ This project is open source and available under the [MIT License](LICENSE).
 
 Remember: This is where **formal meets funny**, where **serious gets silly**, and where **questions get hilariously entertaining answers**! 
 
-Whether you're a developer looking to learn, someone who just wants to have fun with AI, or someone who appreciates a good dad joke mixed with professional advice - this is your place!
-
 ---
 
-**Made with ❤️, 🤖, and too much coffee by mk-knight23**
+<p align="center">
+  <b>Made with ❤️, 🤖, and too much coffee by mk-knight23</b>
+</p>
 
 *P.S. - No robots were harmed in the making of this app. Some may have been slightly entertained, though. 😉*
 
 ---
 
 🔗 **Live Demo**: [Coming Soon to Vercel!]()
-
 🐛 **Issues**: [Report bugs or request features here]()
-
 💬 **Questions**: [Start a discussion here]()
-
 ⭐ **Like it?**: Star the repo and share the laughter! 🤩
