@@ -290,6 +290,9 @@ The sky appears to be in one of its more theatrical moods today, likely performi
 
 ## 🏗️ Project Structure
 
+<details>
+<summary>View Detailed Directory Map</summary>
+
 ```
 funny-formal-ai/
 ├── src/
@@ -309,6 +312,8 @@ funny-formal-ai/
 ├── package.json              # Dependencies (React 19, Next.js 15)
 └── README.md                 # This file
 ```
+</details>
+
 
 ## 🎨 Customization
 
